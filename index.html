@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="estilos.css">
+  <title>JS</title>
+</head>
+
+<body>
+  <header>
+    <h1>Cosas increibles que puedo hacer con JavaScript</h1>
+  </header>
+  <section class="botonera">
+    <button type="button" class="btn btn-warning" onclick="window.location.reload()">inicio</button>
+    <button type="button" class="btn btn-info" onclick="document.getElementById('parrafo').innerHTML= 'flipa y reflipa'">Cambiar contenido</button>
+<button type="button" class="btn btn-success" onclick="document.querySelector('.foto').src='img/pexels-jana-brenner-2161927662-37850403.jpg'">flores</button>
+<button type="button" class="btn btn-danger" onclick="document.querySelector('.foto').src='img/pexels-matt-liatkouski-2160562952-36815607.jpg'">mariposas</button>
+<button type="button" class="btn btn-primary" onclick="document.querySelector('header').style.background='pink'">Cambiar estilo</button> 
+<!-- <button type="button" class="btn btn-light" onclick="document.querySelector('.otraseccion').style.display='none'">Ocultar</button>
+<button type="button" class="btn btn-dark"  onclick="document.querySelector('.otraseccion').style.display='block'">Mostrar</button> -->
+<button type="button" class="btn btn-light" onclick="document.querySelector('.otraseccion').style.visibility='hidden'">Ocultar</button>
+<button type="button" class="btn btn-dark"  onclick="document.querySelector('.otraseccion').style.visibility='visible'">Mostrar</button>
+</section>
+  <section class="texto">
+    <p id="parrafo">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima culpa ea fuga. Dolorum, dolore! Natus molestiae doloremque consectetur possimus fuga beatae quibusdam in iure, dolor autem molestias aliquid mollitia perferendis.
+    Suscipit, officiis doloribus. Molestiae laborum natus quia fugiat deleniti alias molestias veniam temporibus quo, autem, incidunt sequi. Doloremque, voluptatibus quo. Culpa neque debitis dolores provident at illum eum, modi repudiandae!
+    Odit blanditiis, ab at sapiente quo amet recusandae ipsum voluptatibus doloribus explicabo corporis cupiditate exercitationem totam error vero natus nisi quam fugit consectetur. Veniam minima rem officiis eos error maxime.
+    Illo, corrupti qui quia molestiae temporibus nesciunt ea commodi illum, iure voluptatem nulla veniam alias impedit error! Unde voluptate dicta aperiam repudiandae quia, dolorem facere fugit, quis eius quaerat beatae?
+    Cupiditate aliquid dolor ipsa perferendis aperiam voluptatum, nesciunt iusto ducimus vero sapiente labore, illum praesentium quo ab harum. Adipisci quisquam repudiandae excepturi aperiam at libero! Esse totam quaerat non voluptatum!
+    Impedit fugit iure alias unde reiciendis illum ducimus consequuntur quae nam culpa repellat debitis et nostrum doloribus beatae distinctio magnam optio, similique aut placeat tempora corporis possimus id. Earum, in?
+    Quisquam maxime natus eius laudantium consectetur quos a, sequi rem. Dignissimos accusamus aperiam, odio delectus numquam ea, quam vitae natus, similique rem pariatur dolores maxime laboriosam libero earum quidem! Quam.
+</p>
+<div class="imagen">
+<img class="foto" src="img/pexels-jana-brenner-2161927662-37850403.jpg" alt="foto"></div>
+  </section>
+  <div class="otraseccion">
+    <h2>esto se acaba</h2>
+
+  </div>
+<footer>
+  
+</footer>
+</body>
+
+
+</html>
