@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="shortcut icon" href="img/calculator-solid-full.svg" type="image/x-icon">
+  <title>calculadora</title>
+
+</head>
+
+<body>
+  <main class="calculadora">
+    <h1>calculadora molona</h1>
+    <section class="zona-nombre">
+      <input type="text" id="nombre" placeholder="tu nombre aqui">
+      <button onclick="saludar()">saludar</button>
+      <p id="saludo"></p>
+    </section>
+    <section class="zona-calculadora">
+      <div class="teclado">
+        <button onclick="escribir('7')">7</button>
+        <button onclick="escribir('8')">8</button>
+        <button onclick="escribir('9')">9</button>
+        <button onclick="escribir('/')">/</button>
+
+        <button onclick="escribir('4')">4</button>
+        <button onclick="escribir('5')">5</button>
+        <button onclick="escribir('6')">6</button>
+        <button onclick="escribir('*')">*</button>
+
+        <button onclick="escribir('1')">1</button>
+        <button onclick="escribir('2')">2</button>
+        <button onclick="escribir('3')">3</button>
+        <button onclick="escribir('-')">-</button>
+
+        <button onclick="escribir('0')">0</button>
+        <button onclick="escribir('.')">.</button>
+        <button onclick="borrarPantalla('')">C</button>
+        <button onclick="escribir('+')">+</button>
+      </div>
+<button class="boton-igual" onclick="calcular()">=</button>
+<input type="text" id="pantalla" placeholder="Resultado" readonly>
+    </section>
+    <p id="comentario"></p>
+    <section class="extras">
+      <button onclick="modoFiesta()">modo fiesta</button>
+      <button onclick="limpiarTodo()">limpiar todo</button>
+  </main>
+  <script src="calcu.js"></script>
+
+</body>
+
+</html>
