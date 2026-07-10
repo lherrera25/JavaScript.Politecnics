@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Configuración General y Reinicio
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6394ba 0%, #beb1cb 100%);
+  color: #333;
+  padding: 20px;
+}
+
+/* ==========================================================================
+   Contenedor Principal (Tarjeta)
+   ========================================================================== */
+main {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+main:hover {
+  transform: translateY(-5px);
+}
+
+/* ==========================================================================
+   Tipografías y Textos
+   ========================================================================== */
+h1 {
+  font-size: 1.8rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+p {
+  color: #718096;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   Formularios y Elementos Interactivos
+   ========================================================================== */
+input[type="number"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Efecto focus para el input */
+input[type="number"]:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+}
+
+/* Efectos para el botón */
+button:hover {
+  background: #5a67d8;
+  box-shadow: 0 6px 12px rgba(90, 103, 216, 0.3);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Contenedor del Mensaje / Resultado
+   ========================================================================== */
+.mensaje {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2d3748;
+  word-wrap: break-word;
+}

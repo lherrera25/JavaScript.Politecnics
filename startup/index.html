@@ -3,39 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia de Villanos</title>
     <link rel="stylesheet" href="estilo.css">
-   
-    <title>Academia del Villanos</title>
-    
 </head>
 <body>
 
 <header>
-    <h1>Academia del Villanos</h1>
-        <nav>
+    <h1>Academia de Villanos</h1>
+
+    <nav>
         <ul class="servicios">
-            <li><a href="#">Robo de joyas</a></li>
-            <li><a href="#">Asaltos en tren</a></li>
-            <li><a href="#">lecciones de maldad</a></li>
-            <li><a href="#">Diseño de Misiones</a></li>
+            <li><a href="#principal">Servicio principal</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#presupuesto">Presupuesto</a></li>
         </ul>
     </nav>
 </header>
-</header>
- <img src="img/images (1).jpg" alt="villanos">
-<main>
-    <h2>Donde nacen los grandes antagonistas... de ficción.</h2>
 
-    <p>
-        Bienvenido a la Academia del Villano, un universo ficticio dedicado a la
-        formación de personajes memorables para historias, cómics y videojuegos.
-        Aquí los estudiantes desarrollan estrategias imaginarias, crean planes
-        elaborados y aprenden a construir organizaciones criminales ficticias para
-        enriquecer sus relatos. Nuestro objetivo es fomentar la creatividad y el
-        diseño narrativo, siempre dentro del ámbito de la ficción y el entretenimiento.
-    </p>
+<main>
+
+    <section id="principal">
+        <h2>Servicio Principal</h2>
+
+        <img src="img/images (1).jpg" alt="Academia de Villanos">
+
+        <p>
+            Bienvenido a la Academia de Villanos, un lugar dedicado a la creación
+            de personajes ficticios para novelas, videojuegos y cómics.
+            Aprenderás a desarrollar antagonistas memorables y mundos imaginarios
+            para hacer tus historias más interesantes.
+        </p>
+    </section>
+
+    <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+
+        <button onclick="mostrarServicio('personajes')">
+            Diseño de Personajes
+        </button>
+
+        <button onclick="mostrarServicio('historias')">
+            Creación de Historias
+        </button>
+
+        <button onclick="mostrarServicio('misiones')">
+            Diseño de Misiones
+        </button>
+
+        <button onclick="mostrarServicio('liderazgo')">
+            Liderazgo Ficticio
+        </button>
+
+        <div id="descripcion">
+            <p>
+                Haz clic en cualquiera de los servicios para ver su descripción.
+            </p>
+        </div>
+    </section>
+
+    <section id="presupuesto">
+        <h2>Solicita un presupuesto</h2>
+
+        <label for="servicio">
+            Selecciona un servicio:
+        </label>
+
+        <select id="servicio">
+            <option value="50">Diseño de Personajes</option>
+            <option value="75">Creación de Historias</option>
+            <option value="100">Diseño de Misiones</option>
+            <option value="150">Liderazgo Ficticio</option>
+        </select>
+
+        <br><br>
+
+        <label for="cantidad">
+            Cantidad:
+        </label>
+
+        <input type="number" id="cantidad" value="1" min="1">
+
+        <br><br>
+
+        <button onclick="calcularPresupuesto()">
+            Calcular presupuesto
+        </button>
+
+        <h3 id="resultado"></h3>
+    </section>
 
 </main>
+
+<footer>
+    <p> Proyecto educativo de ficción- Academia de Villanos 2026 &copy</p>
+</footer>
+
 <script src="java.js"></script>
+
 </body>
 </html>
