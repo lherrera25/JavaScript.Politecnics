@@ -1,194 +1,520 @@
 /* ==========================================
    RESET & ESTILOS GLOBALES
    ========================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
 body {
+
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a; /* Fondo oscuro */
-  color: #e0e0e0; /* Texto claro */
+
+  background-color: #1a1a1a;
+
+  color: #e0e0e0;
+
   line-height: 1.6;
+
 }
 
+
 /* ==========================================
-   HEADER & NAVEGACIÓN (Menú superior)
+   HEADER & NAVEGACIÓN
    ========================================== */
+
+
 header {
+
   background-color: #111111;
-  border-bottom: 3px solid #8b0000; /* Detalle en rojo oscuro */
+
+  border-bottom: 3px solid #8b0000;
+
   position: sticky;
+
   top: 0;
+
   z-index: 1000;
+
   padding: 10px 40px;
 
-  /* Usamos tablas/bloques alineados para compatibilidad y estructura limpia */
-  display: block;
-  overflow: hidden; /* Limpia los flotados internos */
+  overflow: hidden;
+
 }
+
+
 
 header h1 {
+
   font-size: 1.5rem;
+
   color: #ff3333;
+
   float: left;
+
   line-height: 50px;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
+
 }
+
+
 
 header nav {
+
   float: right;
+
 }
+
+
 
 .servicios {
+
   list-style: none;
+
   margin: 0;
+
   padding: 0;
+
 }
 
-/* Posiciona un elemento al lado del otro */
+
+
 .servicios li {
+
   display: inline-block;
+
 }
+
+
 
 .servicios li a {
+
   display: block;
+
   color: #b0b0b0;
+
   text-decoration: none;
+
   padding: 0 20px;
+
   line-height: 50px;
+
   font-weight: 600;
-  font-size: 1.35rem;
-  transition: all 0.3s ease;
+
+  font-size: 1.2rem;
+
+  transition: .3s;
+
 }
 
-/* Efecto Hover Profesional */
+
+
 .servicios li a:hover {
-  color: #ffffff;
-  background-color: #2a0000;
+
+  color:white;
+
+  background-color:#2a0000;
+
   box-shadow: inset 0 -3px 0 #ff3333;
+
 }
+
+
+
+
 
 /* ==========================================
-   CONTENIDO PRINCIPAL (Main)
+   CONTENIDO PRINCIPAL
    ========================================== */
+
+
 main {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
+
+  max-width:900px;
+
+  margin:40px auto;
+
+  padding:0 20px;
+
+  text-align:center;
+
 }
 
-main img {
-  display: block; /* Hace que la imagen ocupe una línea */
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto 30px; /* Centra la imagen horizontalmente */
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-  border: 1px solid #333;
-  transition: transform 0.3s ease;
-}
-main img:hover {
-  transform: scale(1.02); /* Efecto sutil al pasar el mouse */
-}
+
 
 main h2 {
-  font-size: 1.8rem;
-  color: #ffffff;
-  margin-bottom: 20px;
-  font-weight: 400;
+
+  font-size:2rem;
+
+  color:white;
+
+  margin-bottom:25px;
+
+  font-weight:400;
+
 }
+
+
+
+
+
+/* ==========================================
+   IMÁGENES
+   ========================================== */
+
+
+main img {
+
+  display:block;
+
+  width:100%;
+
+  max-width:650px;
+
+  height:auto;
+
+  max-height:550px;
+
+  object-fit:contain;
+
+  margin:0 auto 30px;
+
+  border-radius:12px;
+
+  border:2px solid #333;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.7);
+
+  transition:.3s;
+
+}
+
+
+
+main img:hover {
+
+  transform:scale(1.03);
+
+}
+
+
+
+
+
+/* ==========================================
+   TEXTOS
+   ========================================== */
+
 
 main p {
-  font-size: 1.1rem;
-  color: #a0a0a0;
-  text-align: justify;
-  background: #222;
-  padding: 25px;
-  border-radius: 6px;
-  border-left: 4px solid #ff3333; /* Acento en el bloque de texto */
+
+  font-size:1.1rem;
+
+  color:#a0a0a0;
+
+  text-align:justify;
+
+  background:#222;
+
+  padding:25px;
+
+  border-radius:8px;
+
+  border-left:4px solid #ff3333;
+
 }
+
+
+
+
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+
+
 button {
-    background-color: #8b0000;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px; /* Redondea las esquinas */
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin: 10px;
-    transition: all 0.3s ease;
+
+  background-color:#8b0000;
+
+  color:white;
+
+  border:none;
+
+  border-radius:12px;
+
+  padding:12px 25px;
+
+  font-size:1rem;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  margin:10px;
+
+  transition:.3s;
+
 }
+
+
 
 button:hover {
-    background-color: #ff3333;
-    transform: scale(1.05);
+
+  background-color:#ff3333;
+
+  transform:scale(1.05);
+
 }
+
+
+
+
+
+/* ==========================================
+   SECCIONES DE VILLANOS
+   ========================================== */
+
+
+#villano-ancestral,
+#villano-payaso,
+#villanos-callejeros,
+#villana-hechicera-azul {
+
+
+  margin:50px auto;
+
+  padding:30px;
+
+  background:#222;
+
+  border:2px solid #8b0000;
+
+  border-radius:15px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+
+}
+
+
+
+#villano-ancestral h2,
+#villano-payaso h2,
+#villanos-callejeros h2,
+#villana-hechicera-azul h2 {
+
+
+  color:#ff3333;
+
+}
+
+
+
+#villano-ancestral img,
+#villano-payaso img,
+#villanos-callejeros img,
+#villana-hechicera-azul img {
+
+
+  display:block;
+
+  width:100%;
+
+  max-width:600px;
+
+  height:auto;
+
+  max-height:500px;
+
+  object-fit:contain;
+
+  margin:20px auto;
+
+  border-radius:15px;
+
+  border:3px solid #8b0000;
+
+}
+
+
+
+
+
+/* ==========================================
+   PRESUPUESTO
+   ========================================== */
+
+
 #presupuesto {
-    background-color: #222;
-    border: 2px solid #8b0000;
-    border-radius: 12px;
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 600px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+  background:#222;
+
+  border:2px solid #8b0000;
+
+  border-radius:12px;
+
+  padding:30px;
+
+  margin:40px auto;
+
+  max-width:600px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+
 }
+
+
 
 #presupuesto h2 {
-    color: #ff3333;
-    margin-bottom: 20px;
+
+  color:#ff3333;
+
 }
 
+
+
 #presupuesto label {
-    color: #e0e0e0;
-    font-weight: bold;
+
+  color:#e0e0e0;
+
+  font-weight:bold;
+
 }
+
+
 
 #presupuesto select,
 #presupuesto input {
-    background-color: #111;
-    color: white;
-    border: 1px solid #8b0000;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 10px;
+
+
+  background:#111;
+
+  color:white;
+
+  border:1px solid #8b0000;
+
+  border-radius:8px;
+
+  padding:10px;
+
+  margin-top:10px;
+
 }
 
+
+
 #presupuesto h3 {
-    margin-top: 20px;
-    color: #ff3333;
+
+  margin-top:20px;
+
+  color:#ff3333;
+
 }
-footer {
-  text-align: end;
-  /* padding: 25px;
-    background-color: #a0a0a0; */
-  background: #0a0a0a;
-  color: #d6c7b0;
-  border-top: 2px solid #8b0000;
-  padding: 25px;
-}
+
+
+
+
+
 /* ==========================================
-   RESPONSIVE (Para celulares)
+   FOOTER
    ========================================== */
-@media (max-width: 768px) {
-  header h1,
-  header nav {
-    float: none;
-    text-align: center;
-  }
-  header h1 {
-    line-height: 40px;
-  }
-  .servicios li {
-    display: block;
-  }
-  .servicios li a {
-    line-height: 40px;
-    padding: 0;
-  }
+
+
+footer {
+
+  text-align:end;
+
+  background:#0a0a0a;
+
+  color:#d6c7b0;
+
+  border-top:2px solid #8b0000;
+
+  padding:25px;
+
+}
+
+
+
+
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+
+@media(max-width:768px){
+
+
+header h1,
+header nav {
+
+  float:none;
+
+  text-align:center;
+
+}
+
+
+
+header h1 {
+
+  line-height:40px;
+
+}
+
+
+
+.servicios li {
+
+  display:block;
+
+}
+
+
+
+.servicios li a {
+
+  line-height:40px;
+
+}
+
+
+
+main {
+
+  padding:0 15px;
+
+}
+
+
+
+main img,
+#villano-ancestral img,
+#villano-payaso img,
+#villanos-callejeros img,
+#villana-hechicera-azul img {
+
+
+  width:100%;
+
+  max-height:350px;
+
+}
+
+
+
+main p {
+
+  font-size:1rem;
+
+}
+
+
 }

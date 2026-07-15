@@ -38,61 +38,83 @@
             </p>
         </section>
 
+        <nav>
+            <ul class="Tipos de Villanos">
+                <li><button onclick="mostrarServicio('Villano Ancestral')">Villano Ancestral</button></li>
+                <li><button onclick="mostrarServicio('Villanos Callejeros')">Villanos Callejeros</button></li>
+                <li><button onclick="mostrarServicio('presupuesto')">Presupuesto</button></li>
+            </ul>
+        </nav>
+
+        <section id="Villano Ancestral">
+            <h2>Villano Ancestral</h2>
+            <img src="img/pexels-miguel-rodriguez-1844391833-31576390.jpg" alt="Villano Ancestral">
+            <p>
+                Desde las sombras de un pasado olvidado emerge el Villano Ancestral, una entidad nacida de antiguas
+                leyendas y secretos prohibidos. Durante siglos permaneció oculto, acumulando poder y esperando el
+                momento perfecto para regresar al mundo. Su presencia trae consigo el miedo, la destrucción y el deseo
+                de recuperar un dominio perdido. Con una inteligencia oscura y una fuerza imposible de igualar, este
+                enemigo representa una amenaza que desafía a héroes y civilizaciones enteras, obligándolos a enfrentarse
+                no solo a su poder, sino también a los misterios de un pasado que creían enterrado.
+            </p>
+        </section>
+        <section id="Villano payaso">
+            <h2>Villano payaso</h2>
+            <img src="img/pexels-toni-5564538.jpg" alt="Villano payaso">
+            <p>
+                El Villano Payaso es una figura tan inquietante como impredecible, capaz de transformar la diversión en
+                una pesadilla. Bajo su sonrisa exagerada y su apariencia colorida se esconde una mente retorcida que
+                utiliza el humor, los trucos y el engaño para sembrar el caos. Sus bromas ocultan planes oscuros, y cada
+                carcajada anuncia un nuevo desafío para quienes intentan detenerlo. Con una personalidad extravagante y
+                una forma de actuar imposible de predecir, este villano demuestra que detrás de una máscara alegre puede
+                esconderse una amenaza verdaderamente aterradora.
+
+            </p>
+        </section>
+
         <section id="servicios">
-            <h2>Nuestros Servicios</h2>
-
-            <button onclick="mostrarServicio('personajes')">
-                Diseño de Personajes
-            </button>
-
-            <button onclick="mostrarServicio('historias')">
-                Creación de Historias
-            </button>
-
-            <button onclick="mostrarServicio('misiones')">
-                Diseño de Misiones
-            </button>
-
-            <button onclick="mostrarServicio('liderazgo')">
-                Liderazgo Ficticio
-            </button>
-
-            <div id="descripcion">
-                <p>
-                    Haz clic en cualquiera de los servicios para ver su descripción.
-                </p>
-            </div>
+            <h2>Villanos Callejeros</h2>
+            <img src="img/pexels-rafael-silva-147016419-11159142.jpg" alt="Villanos Callejeros">
+            <p>
+                Los villanos callejeros nacen en los rincones más oscuros de la ciudad, donde el caos y la ambición se
+                mezclan con la supervivencia. Son figuras temidas por sus métodos agresivos, sus planes improvisados y
+                su control sobre los barrios que dominan. Aunque no poseen grandes poderes ni ejércitos, utilizan la
+                astucia, la intimidación y sus conexiones para imponer su voluntad. Cada calle guarda una historia sobre
+                estos criminales, personajes que convierten las avenidas en un territorio de peligro constante y
+                desafían a quienes intentan devolver la justicia a la ciudad.
+            </p>
+        </section>
+        <section id="Villana hechicera Azul">
+            <h2>Villana hechicera Azul</h2>
+            <img src="img/pexels-ericka-sanchez-1098642631-32684800.jpg" alt="Villana hechicera Azul">
+            <p>La Hechicera Azul es una villana envuelta en misterio y poder, una figura elegante cuya magia proviene de
+                antiguos conocimientos ocultos. Su belleza y serenidad esconden una mente calculadora capaz de manipular
+                energías, controlar elementos y dominar a quienes se cruzan en su camino. Vestida con tonos azules como
+                el hielo y la noche, utiliza sus hechizos para imponer su voluntad y convertir la magia en un arma
+                devastadora. Aunque muchos la ven como una protectora de secretos prohibidos, su verdadera ambición es
+                alcanzar un poder absoluto que la convierta en la soberana de un mundo sometido bajo su hechizo.
+            </p>
         </section>
 
         <section id="presupuesto">
-            <h2>Solicita un presupuesto</h2>
+            <h2>Presupuesto</h2>
+        
+        </section>
+        <br><br>
 
-            <label for="servicio">
-                Selecciona un servicio:
-            </label>
+        <label for="cantidad">
+            Cantidad:
+        </label>
 
-            <select id="servicio">
-                <option value="50">Diseño de Personajes</option>
-                <option value="75">Creación de Historias</option>
-                <option value="100">Diseño de Misiones</option>
-                <option value="150">Liderazgo Ficticio</option>
-            </select>
+        <input type="number" id="cantidad" value="1" min="1">
 
-            <br><br>
+        <br><br>
 
-            <label for="cantidad">
-                Cantidad:
-            </label>
+        <button onclick="calcularPresupuesto()">
+            Calcular presupuesto
+        </button>
 
-            <input type="number" id="cantidad" value="1" min="1">
-
-            <br><br>
-
-            <button onclick="calcularPresupuesto()">
-                Calcular presupuesto
-            </button>
-
-            <h3 id="resultado"></h3>
+        <h3 id="resultado"></h3>
         </section>
 
     </main>
