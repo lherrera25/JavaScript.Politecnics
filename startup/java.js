@@ -1,6 +1,6 @@
-// =======================================
+// ======================================
 // ACADEMIA DE VILLANOS
-// =======================================
+// ======================================
 
 // Elementos del HTML
 const botonCalcular = document.getElementById("boton-calcular");
