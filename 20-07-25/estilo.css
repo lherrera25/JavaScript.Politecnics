@@ -1,0 +1,104 @@
+body{
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fb;
+    color: #374151;
+    margin: 0;
+    line-height: 1.5;
+}
+
+body.modoNocturno{
+    background-color: rgb(33, 33, 33);
+    color: ghostwhite;
+}
+
+main {
+    width: min(70em, 100%);
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+.panel{
+    background-color: white;
+    border: 1px solid #dbe4ee;
+    border-radius: 12px;
+    padding: 2em;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+body.modoNocturno .panel{
+    background-color: #2c2c2c;
+    border-color: #555;
+}
+
+.datos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.dato{
+    flex: 1 1 12em;
+    border: 1px solid #d6dee8;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    padding: 1.2em;
+    transition: .25s;
+}
+
+.dato:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,.1);
+}
+
+body.modoNocturno .dato{
+    background-color: #3b3b3b;
+    border-color: #555;
+}
+
+.dato h3{
+    margin-top: 0;
+    margin-bottom: .8em;
+    color: coral;
+    font-size: 1.1rem;
+}
+
+body.modoNocturno .dato h3{
+    color: #7db8ff;
+}
+
+.dato p{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cabecera{
+    background: linear-gradient(135deg,#606873,#9fa9ba);
+    color: white;
+    text-align: center;
+    padding: 2em;
+    margin-bottom: 2em;
+}
+
+.etiqueta{
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    padding: .3em .8em;
+    border-radius: 20px;
+    font-size: .85rem;
+    text-transform: uppercase;
+}
+
+button{
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: .8em 1.4em;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover{
+    background-color: grey;
+}

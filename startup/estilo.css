@@ -83,6 +83,9 @@ header nav {
 
 }
 
+ul {
+  list-style-type: n;
+}
 
 
 .servicios li {
