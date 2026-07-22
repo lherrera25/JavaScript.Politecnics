@@ -1,0 +1,188 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root{
+    --fondo:#F6F8FA;
+    --card:#FFFFFF;
+    --primario:#2D6A5B;
+    --primario-hover:#235447;
+    --texto:#1F2937;
+    --texto-sec:#5F6B7A;
+    --borde:#E6E9ED;
+    --suave:#EEF6F3;
+    --shadow:0 15px 40px rgba(15,23,42,.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Manrope',sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:2rem;
+}
+
+main{
+    width:100%;
+    max-width:500px;
+}
+
+h1{
+    text-align:center;
+    font-size:2.2rem;
+    font-weight:700;
+    margin-bottom:2rem;
+    color:var(--texto);
+}
+
+/* Tarjeta */
+
+#actividad{
+    background:var(--card);
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid var(--borde);
+    box-shadow:var(--shadow);
+}
+
+/* Imagen */
+
+#actividad::before{
+    content:"";
+    display:block;
+    height:220px;
+    background:
+        linear-gradient(rgba(31,41,55,.25), rgba(31,41,55,.25)),
+        url("https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80");
+    background-size:cover;
+    background-position:center;
+}
+
+#actividad>*{
+    padding-inline:28px;
+}
+
+/* Etiqueta */
+
+#actividad p:first-of-type{
+    display:inline-block;
+    margin-top:24px;
+    margin-bottom:16px;
+    padding:7px 15px;
+    border-radius:30px;
+    background:var(--suave);
+    color:var(--primario);
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+}
+
+/* Título */
+
+h2{
+    font-size:1.8rem;
+    margin-bottom:12px;
+    color:var(--texto);
+}
+
+/* Descripción */
+
+h2+p{
+    color:var(--texto-sec);
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+/* Caja de plazas */
+
+#actividad p:nth-of-type(3){
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--suave);
+    padding:16px 18px;
+    border-radius:14px;
+    margin-bottom:24px;
+    font-weight:600;
+}
+
+#numeroPlazas{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--primario);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+    font-size:1rem;
+}
+
+/* Botón */
+
+#btnReserva{
+    width:calc(100% - 56px);
+    margin:0 28px;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:var(--primario);
+    color:white;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+#btnReserva:hover{
+    background:var(--primario-hover);
+    transform:translateY(-2px);
+}
+
+#btnReserva:focus-visible{
+    outline:3px solid #8DD8C4;
+    outline-offset:3px;
+}
+
+/* Mensajes */
+
+#mensajesReserva{
+    margin:22px 28px 28px;
+    padding-top:18px;
+    border-top:1px solid var(--borde);
+    color:var(--texto-sec);
+    font-weight:600;
+    min-height:24px;
+}
+
+/* Responsive */
+
+@media (max-width:600px){
+
+    body{
+        padding:1rem;
+    }
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    #actividad::before{
+        height:180px;
+    }
+
+    h2{
+        font-size:1.5rem;
+    }
+
+}

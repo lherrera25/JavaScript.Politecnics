@@ -10,6 +10,57 @@ const cantidad = document.getElementById("cantidad");
 const resultado = document.getElementById("resultado");
 const listaAlumnos = document.getElementById("lista-alumnos");
 
+// Número máximo de alumnos
+const maxAlumnos = 20;
+
+// Listado de nombres
+const nombres = [
+    "Joker",
+    "Harley",
+    "Victor",
+    "Edward",
+    "Selina",
+    "Bruce",
+    "Oswald",
+    "Pamela",
+    "Lex",
+    "Arthur",
+    "Bane",
+    "Raven",
+    "Magnus",
+    "Draco",
+    "Loki",
+    "Hades",
+    "Scar",
+    "Ronan",
+    "Morgana",
+    "Nyssa"
+];
+
+// Listado de apellidos
+const apellidos = [
+    "Romero",
+    "Black",
+    "Dark",
+    "Storm",
+    "Knight",
+    "Crow",
+    "Shadow",
+    "Frost",
+    "Steel",
+    "Wolf",
+    "King",
+    "Hunter",
+    "Stone",
+    "Cross",
+    "Doom",
+    "Night",
+    "Grimm",
+    "Blaze",
+    "Viper",
+    "Thorne"
+];
+
 // Comprobamos que existe el botón
 if (botonCalcular) {
     botonCalcular.addEventListener("click", calcularPresupuesto);
@@ -31,8 +82,11 @@ function calcularPresupuesto() {
     let curso = "";
     let precio = 0;
 
-    // Validación
-    if (alumnos <= 0 || isNaN(alumnos)) {
+    // ==========================
+    // VALIDACIONES
+    // ==========================
+
+    if (alumnos <= 0 || Number.isNaN(alumnos)) {
 
         resultado.innerHTML =
             "<span style='color:red;'>⚠ Introduce una cantidad válida.</span>";
@@ -40,7 +94,19 @@ function calcularPresupuesto() {
         return;
     }
 
-    // Precio según el curso
+    if (alumnos > maxAlumnos) {
+
+        resultado.innerHTML =
+            "<span style='color:red;'>⚠ Solo se permiten un máximo de " +
+            maxAlumnos +
+            " alumnos.</span>";
+
+        return;
+    }
+
+    // ==========================
+    // PRECIO SEGÚN EL CURSO
+    // ==========================
 
     switch (tipo) {
 
@@ -66,18 +132,21 @@ function calcularPresupuesto() {
 
     }
 
-    // Extras
+    // ==========================
+    // EXTRAS
+    // ==========================
 
-    let material = alumnos * 25;
-    let diploma = alumnos * 15;
-    let matricula = 50;
+    const material = alumnos * 25;
+    const diploma = alumnos * 15;
+    const matricula = 50;
 
-    // Operaciones
+    // ==========================
+    // OPERACIONES
+    // ==========================
 
-    let subtotal = alumnos * precio;
+    const subtotal = alumnos * precio;
 
     let descuento = 0;
-
     let mensaje = "";
 
     if (alumnos >= 10) {
@@ -112,18 +181,17 @@ function calcularPresupuesto() {
 
     }
 
-    let total =
+    const total =
         subtotal +
         material +
         diploma +
         matricula -
         descuento;
 
-    // Fecha
-
-    let fecha = new Date();
-
-    // Resultado
+    const fecha = new Date();
+        // =======================================
+    // RESULTADO DEL PRESUPUESTO
+    // =======================================
 
     resultado.innerHTML =
 
@@ -145,7 +213,7 @@ function calcularPresupuesto() {
 
         "<br>" +
 
-        "<strong>Alumnos:</strong> " +
+        "<strong>Alumnos inscritos:</strong> " +
         alumnos +
 
         "<br><br>" +
@@ -188,27 +256,61 @@ function calcularPresupuesto() {
         fecha.toLocaleDateString("es-ES") +
         "</p>";
 
-    // Lista de alumnos
+    // =======================================
+    // BUCLE FOR
+    // Genera un nombre y apellido diferente
+    // para cada alumno inscrito
+    // =======================================
 
-    listaAlumnos.innerHTML =
-        "<h3>Alumnos inscritos</h3>";
+    let html = "<h3>📋 Lista de alumnos inscritos</h3><br>";
+
+    // Evitar nombres repetidos
+    let nombresUsados = [];
 
     for (let i = 1; i <= alumnos; i++) {
 
-        listaAlumnos.innerHTML +=
+        let nombreCompleto = "";
 
-            "<p>✔ Alumno " +
-            i +
-            " inscrito en " +
-            curso +
-            "</p>";
+        do {
+
+            let nombre =
+                nombres[Math.floor(Math.random() * nombres.length)];
+
+            let apellido =
+                apellidos[Math.floor(Math.random() * apellidos.length)];
+
+            nombreCompleto = nombre + " " + apellido;
+
+        } while (nombresUsados.includes(nombreCompleto));
+
+        nombresUsados.push(nombreCompleto);
+
+        html +=
+
+            "<div style='background:#222;border:1px solid #8b0000;padding:15px;border-radius:10px;margin-bottom:15px;'>" +
+
+            "<strong>Alumno " + i + "</strong><br><br>" +
+
+            "<label>Nombre y apellidos</label><br>" +
+
+            "<input " +
+
+            "type='text' " +
+
+            "value='" + nombreCompleto + "' " +
+
+            "readonly " +
+
+            "style='width:100%;padding:10px;border-radius:6px;border:1px solid #555;background:#111;color:white;margin-top:5px;'>" +
+
+            "</div>";
 
     }
 
-    // Mensaje final
+    html +=
 
-    listaAlumnos.innerHTML +=
+        "<h3 style='color:#4CAF50;'>🎉 ¡Bienvenidos a la Academia de Villanos!</h3>";
 
-        "<br><h3 style='color:#4CAF50;'>🎉 ¡Bienvenidos a la Academia de Villanos!</h3>";
+    listaAlumnos.innerHTML = html;
 
 }

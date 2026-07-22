@@ -84,7 +84,7 @@ header nav {
 }
 
 ul {
-  list-style-type: n;
+  list-style-type: none;
 }
 
 
@@ -207,7 +207,45 @@ main img:hover {
 }
 
 
+/* ==========================================
+   LISTA TIPOS DE VILLANOS
+   ========================================== */
 
+.tipos-villanos {
+
+  list-style: none;
+
+  margin: 30px 0;
+
+  padding: 0;
+
+}
+
+.tipos-villanos li {
+
+  margin: 15px 0;
+
+}
+
+.tipos-villanos a {
+
+  color: #ff3333;
+
+  text-decoration: none;
+
+  font-size: 1.2rem;
+
+  font-weight: bold;
+
+  transition: .3s;
+
+}
+
+.tipos-villanos a:hover {
+
+  color: white;
+
+}
 
 
 /* ==========================================
