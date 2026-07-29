@@ -1,0 +1,260 @@
+*{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5em;
+}
+
+
+.navbar {
+    width: 100%;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(249, 246, 246, 0.94);
+    border-bottom: 0.12em solid #202020;
+    backdrop-filter: blur(0.7em);
+}
+
+
+.navbar .logo {
+    color: #202020;
+    font-size: 1.4em;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.navbar .contenedor{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+.navbar i {
+    margin-top: 0.3em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+
+
+nav{
+    display: none;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    color:  rgb(66, 65, 65);
+    text-decoration: none;
+}
+
+nav li {
+    margin: 2em 0;
+}
+
+
+
+nav{
+   
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 30%;
+    padding: 1em;
+    background-color: aquamarine;
+}
+
+#salir{
+    float: right;
+    margin: 0.5em;
+}
+
+.casos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button{
+    margin: 1em;
+}
+.cajaAnimada{
+    width: 50px;
+    height: 50px;
+    background-color: crimson;
+    margin: 1em;
+}
+
+.escalar{
+    transform: scale(1.5);
+}
+
+.rotar{
+    transform: rotate(20deg);
+}
+
+.opacidad{
+    opacity: 0.5;
+}
+
+.redondear{
+    border-radius: 50%;
+}
+
+.combo {
+    transform: scale(1.5) rotate(20deg);
+    background-color: orange;
+    opacity: 0.5;
+    border-radius: 50%;
+}
+
+.controlEspacio{
+    position: relative;
+    height: 150px;
+}
+.circulo{
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+
+
+.mosca{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* transform: none; */
+}
+
+.cajaEscapista{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(249, 131, 151);
+    cursor: pointer;
+    position: absolute;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: ghostwhite;
+    font-size: 2em;
+    top: 50%;
+    left: 50%;
+    padding: 2em;
+}
+
+.mostrar{
+    display: block;
+}
+
+.notificacion{
+    position: fixed;
+    top: 20%;
+    right: 20px;
+    background-color: greenyellow;
+    color: #202020;
+    padding: 1em;
+    white-space: pre-line;
+}
+
+@media (min-width: 700px){
+    #burger, #salir{
+        display: none;
+    }
+
+    .navbar nav{
+
+        display: flex;
+        justify-content: space-between;
+        /* position: static; */
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+        padding: 1em;
+    }
+
+    .navbar ul{
+        display: flex;
+        justify-content: flex-end;
+        gap: 2em;
+        margin: 0;
+    }
+
+    .navbar ul li{
+        margin: 0;
+    }
+}
+
+
+.mosca{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* transform: none; */
+}
+
+@media (min-width: 700px){
+    #burger, #salir{
+        display: none;
+    }
+
+    .navbar nav{
+
+        display: flex;
+        justify-content: space-between;
+        /* position: static; */
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+        padding: 1em;
+    }
+
+    .navbar ul{
+        display: flex;
+        justify-content: flex-end;
+        gap: 2em;
+        margin: 0;
+    }
+
+    .navbar ul li{
+        margin: 0;
+    }
+}

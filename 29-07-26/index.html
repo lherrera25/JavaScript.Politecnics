@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="estilos.css">
+    <title>Efectos molones</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="contenedor">
+            <a href="#" class="logo">Logo molón</a>
+            <i id="burger" class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav>
+            <i id="salir" class="fa-solid fa-xmark"></i>
+            <ul>
+                <li><a href="#transformaciones">Transformaciones</a></li>
+                <li><a href="#temporizador">Temporizador</a></li>
+                <li><a href="#movimiento">Movimiento</a></li>
+                <li><a href="#cursor">Cursor</a></li>
+                <li><a href="#escapista">Escapista</a></li>
+                <li><a href="#contenedorModal">Modal</a></li>
+                <li><a href="#contenedorNotificacion">Notificación</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="casos" id="transformaciones">
+        <div class="card w-75" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Animaciones CSS con cambio de clase</h5>
+                <div class="cajaAnimada"></div>
+                <div class="botones">
+                    <button type="button" id="btnEscalar" class="btn btn-danger">Escalar</button>
+                    <button type="button" id="btnRotar" class="btn btn-danger">Rotar</button>
+                    <button type="button" id="btnOpacidad" class="btn btn-danger">Opacidad</button>
+                    <button type="button" id="btnRedondear" class="btn btn-danger">Redondear</button>
+                    <button type="button" id="btnCombo" class="btn btn-danger">Combo</button>
+                    <button type="button" id="btnReset" class="btn btn-danger">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="casos" id="temporizador">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Temporizador con setInterval()</h5>
+            <p id="contador" class="card-text">0</p>
+            <div class="botones">
+                <button type="button" id="btnContador" class="btn btn-secondary">Contador</button>
+                <button type="button" id="btnReseteo" class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="casos" id="movimiento">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Movimiento animado con setInterval()</h5>
+            <div class="controlEspacio">
+                <div class="circulo"></div>
+            </div>
+            <div class="botones">
+                <button type="button" class="btn btn-warning" id="btnInicio">Inicio</button>
+                <button type="button" class="btn btn-warning" id="btnStop">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="casos" id="cursor">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Seguir al cursor</h5>
+            <div class="controlEspacio">
+                <div class="mosca"></div>
+            </div>
+            <div class="botones">
+                <button type="button" class="btn btn-info" id="btnComienzo">Inicio</button>
+                <button type="button" class="btn btn-info" id="btnParo">Stop</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="casos" id="escapista">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Caja escapista</h5>
+            <div class="controlEspacio">
+                <div class="cajaEscapista"></div>
+            </div>
+
+            <div class="botones">
+                <button type="button" class="btn btn-dark" id="btnInicioEscape">Inicio</button>
+                <button type="button" class="btn btn-dark" id="btnFinEscape">Stop</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="casos" id="contenedorModal">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Modal</h5>
+            <div class="modal">Hola! Soy un modal</div>
+            <div class="botones">
+                <button type="button" class="btn btn-success" id="btnMostrar">Mostrar</button>
+                <button type="button" class="btn btn-success" id="btnOcultar">Ocultar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="casos" id="contenedorNotificacion">
+        <div class="card w-75" style="width: 18rem;">
+            <h5 class="card-title">Notificación flotante</h5>
+            <div class="botones">
+                <button type="button" class="btn btn-primary" id="btnNotificar">Notificar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/0bc510ca7a.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
