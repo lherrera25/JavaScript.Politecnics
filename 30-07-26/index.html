@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Casino para dummies</title>
+</head>
+
+<body>
+    <header>
+        <h1>Casino para dummies</h1>
+        <p>Datos, números secretos, números aleatorios...cosas matemáticas</p>
+    </header>
+    <main class="contenedor">
+        <section class="estacion">
+            <div class="numEstacion">01</div>
+            <h2>Laboratorio de Redondeo</h2>
+            <p>Escribe un número decimal y observa qué resultado produce cada método</p>
+            <div class="zona-controles">
+                <label for="numeroDecimal">
+                    Escribe un número decimal
+                </label>
+                <input type="number" id="numeroDecimal" value="4.6">
+                <button id="btnProbarRedondeo">Probar redondeos</button>
+            </div>
+            <div class="resultadosRedondeos">
+                <article>
+                    <span>Math.round()</span>
+                    <p id="resultadoRound">?</p>
+                    <small>Al entero más próximo</small>
+                </article>
+
+                <article>
+                    <span>Math.ceil()</span>
+                    <p id="resultadoCeil">?</p>
+                    <small>Redondear hacia arriba</small>
+                </article>
+
+                <article>
+                    <span>Math.floor()</span>
+                    <p id="resultadoFloor">?</p>
+                    <small>Redondear hacia abajo</small>
+                </article>
+            </div>
+        </section>
+
+        <section class="estacion">
+            <div class="numEstacion">02</div>
+            <h2>Generación de decimales</h2>
+            <p>Cada clic genera un número entre 0 y casi 1 (pero no)</p>
+            <div class="pantalla">
+                <span id="numeroAleatorio">0.0000 </span>
+            </div>
+            <button id="btnGenerarDecimal">Generar número</button>
+        </section>
+
+        <section class="estacion">
+            <div class="numEstacion">03</div>
+            <h2>Tirada de dados</h2>
+            <p>Elige el numero de caras</p>
+            <div class="zona-controles">
+                <label for="carasDado">Número de caras</label>
+                <select id="carasDado">
+                    <option value="6">6</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <div id="caraDado" class="dado">?</div>
+            <button id="btnLanzarDado">Lanzar el dado</button>
+            <p id="mensajeDado">Esperando lanzamiento...</p>
+            <div id="historial">
+                <h3>Últimos lanzamientos</h3>
+                <div id="listaLanzamientos">Todavía no hay resultados</div>
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
