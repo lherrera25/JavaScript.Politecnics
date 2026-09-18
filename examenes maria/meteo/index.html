@@ -1,20 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
+
+    <!-- Configuración básica -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <title>Meteo</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- Título de la página -->
+    <title>Meteo - Tiempo</title>
+
+    <!-- Conexión con el archivo CSS -->
+    <link
+        rel="stylesheet"
+        href="estilos.css"
+    >
+
 </head>
+
+
 <body>
-    <main class="contenedor">
-        <h1>El tiempo, aquí</h1>
-        <button id="btnTiempo">Usar mi ubicación</button>
-        <p id="mensaje"></p>
-        <section id="resultado"></section>
+
+    <!-- =====================================
+         CONTENEDOR PRINCIPAL
+    ====================================== -->
+
+    <main class="app">
+
+
+        <!-- =====================================
+             CABECERA
+        ====================================== -->
+
+        <header class="cabecera">
+
+            <div class="barra-superior">
+
+
+                <!-- BUSCADOR DE CIUDADES -->
+
+                <div class="busqueda">
+
+                    <input
+                        type="text"
+                        id="ciudad"
+                        placeholder="Buscar ciudad..."
+                    >
+
+                    <button
+                        id="btnBuscar"
+                        type="button"
+                        title="Buscar ciudad"
+                    >
+                        🔎
+                    </button>
+
+                </div>
+
+
+                <!-- BOTÓN PARA USAR LA UBICACIÓN -->
+
+                <button
+                    id="btnTiempo"
+                    class="boton-ubicacion"
+                    type="button"
+                    title="Usar mi ubicación"
+                >
+                    📍
+                </button>
+
+
+                <!-- SELECTOR DE TEMPERATURA -->
+
+                <select
+                    id="unidad"
+                    class="unidad"
+                    title="Seleccionar unidad"
+                >
+
+                    <option value="celsius">
+                        °C
+                    </option>
+
+                    <option value="fahrenheit">
+                        °F
+                    </option>
+
+                </select>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             MENSAJES
+        ====================================== -->
+
+        <p
+            id="mensaje"
+            class="mensaje"
+        ></p>
+
+
+        <!-- =====================================
+             RESULTADOS DEL TIEMPO
+
+             JavaScript modifica este elemento
+             para mostrar los datos de Open-Meteo.
+        ====================================== -->
+
+        <section
+            id="resultado"
+            class="resultado"
+            aria-live="polite"
+        >
+
+
+            <!-- Pantalla inicial -->
+
+            <section class="principal">
+
+                <p class="mi-ubicacion">
+                    MI UBICACIÓN
+                </p>
+
+
+                <h1>
+                    El tiempo
+                </h1>
+
+
+                <div class="icono-principal">
+                    🌤️
+                </div>
+
+
+                <div class="temperatura-principal">
+
+                    <span class="temperatura">
+                        -- 
+                    </span>
+
+                    <span class="simbolo-temperatura">
+                        °
+                    </span>
+
+                </div>
+
+
+                <p class="descripcion">
+                    Pulsa 📍 para conocer el tiempo
+                </p>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             PIE DE PÁGINA
+        ====================================== -->
+
+        <footer>
+
+            <p>
+                Datos meteorológicos proporcionados por
+                Open-Meteo
+            </p>
+
+        </footer>
+
 
     </main>
 
+
+    <!-- =====================================
+         JAVASCRIPT
+
+         Tiene que llamarse meteo.js
+         y estar en la misma carpeta.
+    ====================================== -->
+
     <script src="meteo.js"></script>
+
 </body>
+
 </html>

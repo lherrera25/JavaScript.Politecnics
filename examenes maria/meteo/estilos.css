@@ -1,0 +1,1395 @@
+/* =========================================================
+   METEO
+   Diseño meteorológico profesional
+   Distribución:
+   IZQUIERDA  -> Tiempo actual
+   DERECHA    -> Horas + días
+   ABAJO      -> Información adicional
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+    /*
+        Paleta oscura con buen contraste.
+        Los textos principales usan blanco sobre
+        fondos azul oscuro para favorecer contraste AA.
+    */
+
+    background:
+        linear-gradient(
+            145deg,
+            #071d33 0%,
+            #0b2e4f 35%,
+            #14517a 65%,
+            #0b3559 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   2. LUZ DEL CIELO
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 650px;
+    height: 650px;
+
+    top: -360px;
+    right: -180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.65) 0%,
+            rgba(173, 218, 247, 0.28) 22%,
+            rgba(100, 175, 220, 0.08) 45%,
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   3. NUBES DEL FONDO
+   ========================================================= */
+
+/*
+   Las nubes se generan mediante CSS.
+   No necesitas ninguna imagen externa.
+*/
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 280px;
+    height: 75px;
+
+    top: 95px;
+    left: -100px;
+
+    border-radius: 60px;
+
+    background:
+        rgba(255, 255, 255, 0.13);
+
+    box-shadow:
+        75px -28px 0 -4px rgba(255, 255, 255, 0.13),
+        135px -13px 0 5px rgba(255, 255, 255, 0.13),
+        205px 2px 0 -8px rgba(255, 255, 255, 0.10),
+
+        440px 120px 0 20px rgba(255, 255, 255, 0.07),
+        510px 95px 0 3px rgba(255, 255, 255, 0.07),
+        570px 115px 0 15px rgba(255, 255, 255, 0.06);
+
+    filter: blur(7px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   4. APLICACIÓN
+   ========================================================= */
+
+.app {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding:
+        22px
+        28px
+        45px;
+}
+
+
+/* =========================================================
+   5. CABECERA
+   ========================================================= */
+
+.cabecera {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+
+    margin-bottom: 5px;
+}
+
+.barra-superior {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   6. BUSCADOR
+   ========================================================= */
+
+.busqueda {
+    display: flex;
+
+    flex: 1;
+
+    max-width: 600px;
+
+    height: 44px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        #123f66;
+
+    border:
+        1px solid
+        #39739d;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.20);
+}
+
+.busqueda input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding:
+        0 15px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.busqueda input::placeholder {
+    color:
+        #d7e8f5;
+}
+
+.busqueda input:focus {
+    background:
+        #174b75;
+}
+
+
+/* =========================================================
+   7. BOTÓN BUSCAR
+   ========================================================= */
+
+.busqueda button {
+    width: 50px;
+
+    border: none;
+
+    background:
+        #195985;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.busqueda button:hover {
+    background:
+        #24719f;
+
+    transform: scale(1.03);
+}
+
+.busqueda button:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================================
+   8. BOTÓN UBICACIÓN
+   ========================================================= */
+
+.boton-ubicacion {
+    width: 44px;
+
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        #9d3939;
+
+    border-radius: 50%;
+
+    background:
+        #d1dde8;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.boton-ubicacion:hover {
+    background:
+        #1c608d;
+
+    transform:
+        translateY(-2px);
+}
+
+.boton-ubicacion:active {
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   9. SELECTOR DE UNIDAD
+   ========================================================= */
+
+.unidad {
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        #39739d;
+
+    border-radius: 10px;
+
+    padding:
+        0 12px;
+
+    background:
+        #123f66;
+
+    color: #ffffff;
+
+    outline: none;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+.unidad:focus {
+    border-color:
+        #8fd3ff;
+}
+
+.unidad option {
+    color:
+        #0b2e4f;
+
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   10. MENSAJE
+   ========================================================= */
+
+.mensaje {
+    min-height: 24px;
+
+    margin:
+        7px 0;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color:
+        #e5f4ff;
+}
+
+.mensaje.error {
+    color:
+        #ffd7d7;
+}
+
+
+/* =========================================================
+   11. CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.resultado {
+    display: grid;
+
+    /*
+       Dos columnas principales:
+
+       IZQUIERDA = tiempo actual
+       DERECHA   = previsiones
+
+       La parte inferior ocupa las dos.
+    */
+
+    grid-template-columns:
+        minmax(330px, 0.9fr)
+        minmax(430px, 1.1fr);
+
+    grid-template-areas:
+        "principal horas"
+        "principal dias"
+        "datos datos"
+        "coordenadas coordenadas";
+
+    column-gap: 18px;
+
+    row-gap: 14px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   12. TIEMPO ACTUAL - IZQUIERDA
+   ========================================================= */
+
+.principal {
+    grid-area: principal;
+
+    min-height: 480px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding:
+        35px 20px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #123f66,
+            #0d3557
+        );
+
+    border:
+        1px solid
+        #39739d;
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/*
+   Brillo superior de la tarjeta
+*/
+
+.principal::before {
+    content: "";
+
+    position: absolute;
+
+    top: -130px;
+    right: -90px;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(116, 197, 241, 0.14);
+
+    filter: blur(5px);
+}
+
+
+/* =========================================================
+   13. TEXTO UBICACIÓN
+   ========================================================= */
+
+.mi-ubicacion {
+    position: relative;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color:
+        #d9efff;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   14. NOMBRE DE CIUDAD
+   ========================================================= */
+
+.principal h1 {
+    position: relative;
+
+    font-size: 32px;
+
+    line-height: 1.1;
+
+    font-weight: 400;
+
+    color:
+        #ffffff;
+
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 3px 10px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   15. ICONO PRINCIPAL
+   ========================================================= */
+
+.icono-principal {
+    position: relative;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 54px;
+
+    margin:
+        2px 0
+        4px;
+
+    filter:
+        drop-shadow(
+            0 5px 7px
+            rgba(0, 0, 0, 0.25)
+        );
+}
+
+
+/* =========================================================
+   16. TEMPERATURA
+   ========================================================= */
+
+.temperatura-principal {
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    margin-top: 5px;
+}
+
+.temperatura {
+    font-size: 105px;
+
+    line-height: 0.9;
+
+    font-weight: 200;
+
+    letter-spacing: -6px;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.22);
+}
+
+.simbolo-temperatura {
+    font-size: 44px;
+
+    font-weight: 200;
+
+    line-height: 1;
+
+    margin:
+        4px 0 0 5px;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   17. DESCRIPCIÓN
+   ========================================================= */
+
+.descripcion {
+    position: relative;
+
+    margin-top: 13px;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    color:
+        #ffffff;
+}
+
+.max-min {
+    position: relative;
+
+    margin-top: 7px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color:
+        #eaf7ff;
+}
+
+
+/* =========================================================
+   18. TARJETAS DE PREVISIÓN
+   ========================================================= */
+
+.tarjeta {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        17px;
+
+    border-radius: 17px;
+
+    background:
+        #123f66;
+
+    border:
+        1px solid
+        #39739d;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.20);
+
+    overflow: hidden;
+}
+
+
+/*
+   Línea de brillo superior
+*/
+
+.tarjeta::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        #70bde8;
+}
+
+
+/* =========================================================
+   19. POSICIÓN DE LAS TARJETAS
+   ========================================================= */
+
+/*
+   La primera tarjeta generada por JS es:
+   Pronóstico de las próximas horas
+*/
+
+.resultado .tarjeta:nth-of-type(1) {
+    grid-area: horas;
+}
+
+
+/*
+   La segunda tarjeta es:
+   Pronóstico para 7 días
+*/
+
+.resultado .tarjeta:nth-of-type(2) {
+    grid-area: dias;
+}
+
+
+/* =========================================================
+   20. TÍTULOS DE TARJETAS
+   ========================================================= */
+
+.titulo-tarjeta {
+    margin-bottom: 15px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    color:
+        #e0f2ff;
+}
+
+
+/* =========================================================
+   21. PRONÓSTICO HORARIO
+   ========================================================= */
+
+.horas {
+    display: flex;
+
+    gap: 17px;
+
+    overflow-x: auto;
+
+    padding-bottom: 3px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #5797bf
+        transparent;
+}
+
+.horas::-webkit-scrollbar {
+    height: 4px;
+}
+
+.horas::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.horas::-webkit-scrollbar-thumb {
+    background:
+        #5797bf;
+
+    border-radius: 10px;
+}
+
+.hora {
+    flex:
+        0 0 52px;
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+.hora-nombre {
+    height: 18px;
+
+    margin-bottom: 10px;
+
+    color:
+        #dceffc;
+}
+
+.hora-icono {
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    margin-bottom: 8px;
+
+    filter:
+        drop-shadow(
+            0 2px 4px
+            rgba(0, 0, 0, 0.22)
+        );
+}
+
+.hora-temperatura {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   22. PRONÓSTICO DE DÍAS
+   ========================================================= */
+
+.dias {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.dia {
+    display: grid;
+
+    /*
+       Día | icono | mínima | barra | máxima
+    */
+
+    grid-template-columns:
+        45px
+        32px
+        38px
+        minmax(60px, 1fr)
+        42px;
+
+    align-items: center;
+
+    gap: 6px;
+
+    min-height: 51px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+.dia:first-child {
+    border-top: none;
+}
+
+.nombre-dia {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color:
+        #ffffff;
+}
+
+.dia-icono {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.minima {
+    font-size: 13px;
+
+    color:
+        #c6dceb;
+
+    text-align: right;
+}
+
+.maxima {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color:
+        #ffffff;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   23. BARRA DE TEMPERATURA
+   ========================================================= */
+
+.barra-temperatura {
+    position: relative;
+
+    height: 5px;
+
+    margin:
+        0 6px;
+
+    border-radius: 10px;
+
+    background:
+        #285c7e;
+
+    overflow: hidden;
+}
+
+.barra-temperatura::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 68%;
+
+    height: 100%;
+
+    border-radius: 10px;
+
+    /*
+       Amarillo usado como acento.
+       Es decorativo, no para texto.
+    */
+
+    background:
+        linear-gradient(
+            90deg,
+            #55bde8,
+            #f4d35e
+        );
+}
+
+
+/* =========================================================
+   24. INFORMACIÓN EXTRA - DEBAJO
+   ========================================================= */
+
+.datos-extra {
+    grid-area: datos;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+.dato {
+    min-height: 90px;
+
+    padding:
+        15px;
+
+    border-radius: 15px;
+
+    background:
+        #123f66;
+
+    border:
+        1px solid
+        #39739d;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.dato:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        #174c77;
+}
+
+
+/* =========================================================
+   25. TÍTULO INFORMACIÓN EXTRA
+   ========================================================= */
+
+.dato-titulo {
+    font-size: 10px;
+
+    color:
+        #c9e3f3;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   26. VALOR INFORMACIÓN EXTRA
+   ========================================================= */
+
+.dato-valor {
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   27. COORDENADAS
+   ========================================================= */
+
+.coordenadas {
+    grid-area: coordenadas;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color:
+        #bdd8e9;
+
+    margin-top: 1px;
+}
+
+
+/* =========================================================
+   28. CARGANDO
+   ========================================================= */
+
+.cargando {
+    grid-column:
+        1 / -1;
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 35px 10px;
+
+    border-radius: 20px;
+
+    background:
+        #123f66;
+
+    border:
+        1px solid
+        #39739d;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.20);
+
+    font-size: 14px;
+
+    color:
+        #e5f4ff;
+}
+
+
+/* =========================================================
+   29. FOOTER
+   ========================================================= */
+
+footer {
+    text-align: center;
+
+    padding:
+        20px
+        5px
+        5px;
+
+    font-size: 9px;
+
+    color:
+        #b8d3e5;
+}
+
+
+/* =========================================================
+   30. ANIMACIONES
+   ========================================================= */
+
+.principal {
+    animation:
+        aparecer 0.55s ease;
+}
+
+.tarjeta {
+    animation:
+        aparecer 0.55s ease;
+}
+
+.dato {
+    animation:
+        aparecer 0.45s ease;
+}
+
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   31. TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .app {
+        max-width: 850px;
+
+        padding:
+            20px;
+    }
+
+
+    .resultado {
+        grid-template-columns:
+            minmax(280px, 0.85fr)
+            minmax(350px, 1.15fr);
+    }
+
+
+    .datos-extra {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .temperatura {
+        font-size: 88px;
+    }
+
+}
+
+
+/* =========================================================
+   32. MÓVIL
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .app {
+        max-width: 620px;
+
+        padding:
+            15px
+            13px
+            35px;
+    }
+
+
+    /*
+       En móvil volvemos a una sola columna
+       para que todo sea fácil de leer.
+    */
+
+    .resultado {
+
+        grid-template-columns:
+            1fr;
+
+        grid-template-areas:
+            "principal"
+            "horas"
+            "dias"
+            "datos"
+            "coordenadas";
+
+        gap: 12px;
+    }
+
+
+    .principal {
+        min-height: 430px;
+    }
+
+
+    .datos-extra {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .busqueda {
+        max-width: none;
+    }
+
+}
+
+
+/* =========================================================
+   33. MÓVILES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .app {
+        padding:
+            12px
+            10px
+            30px;
+    }
+
+
+    .barra-superior {
+        gap: 6px;
+    }
+
+
+    .busqueda {
+        height: 40px;
+    }
+
+
+    .boton-ubicacion {
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .unidad {
+        height: 40px;
+
+        padding:
+            0 8px;
+
+        font-size: 11px;
+    }
+
+
+    .principal {
+        min-height: 410px;
+
+        padding:
+            28px
+            12px;
+    }
+
+
+    .principal h1 {
+        font-size: 27px;
+    }
+
+
+    .temperatura {
+        font-size: 76px;
+
+        letter-spacing: -4px;
+    }
+
+
+    .simbolo-temperatura {
+        font-size: 34px;
+    }
+
+
+    .descripcion {
+        font-size: 16px;
+    }
+
+
+    .max-min {
+        font-size: 14px;
+    }
+
+
+    .tarjeta {
+        padding:
+            14px;
+    }
+
+
+    .horas {
+        gap: 13px;
+    }
+
+
+    .dia {
+        grid-template-columns:
+            42px
+            28px
+            35px
+            1fr
+            40px;
+
+        gap: 4px;
+    }
+
+
+    .datos-extra {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 8px;
+    }
+
+
+    .dato {
+        min-height: 75px;
+
+        padding:
+            12px;
+    }
+
+}
+
+
+/* =========================================================
+   34. MÓVILES MUY PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 350px) {
+
+    .busqueda input {
+        font-size: 12px;
+    }
+
+
+    .busqueda button {
+        width: 40px;
+    }
+
+
+    .unidad {
+        padding:
+            0 6px;
+
+        font-size: 10px;
+    }
+
+
+    .principal {
+        min-height: 390px;
+    }
+
+
+    .temperatura {
+        font-size: 68px;
+    }
+
+
+    .simbolo-temperatura {
+        font-size: 31px;
+    }
+
+
+    .dia {
+        grid-template-columns:
+            37px
+            25px
+            32px
+            1fr
+            37px;
+    }
+
+}
